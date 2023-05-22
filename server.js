@@ -41,6 +41,11 @@ app.post('/send_to_user', (req, res) => {
     return res.json(true)
 })
 
+app.post('/send_notification', (req, res) => {
+    io.emit('notification', req.body.message);
+    return res.json(true);
+})
+
 var allUserSockets = []; // All users in current chat room
 
 // Listen for when the client connects via socket.io-client
